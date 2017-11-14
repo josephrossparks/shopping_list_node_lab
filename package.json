@@ -1,0 +1,10 @@
+{
+  "name": "shopping_list_node_lab",
+  "version": "1.0.0",
+  "main": "index.js",
+  "author": "Joey Parks <josephparks13@gmail.com>",
+  "license": "MIT",
+  "dependencies": {
+    "express": "^4.16.2"
+  }
+}
