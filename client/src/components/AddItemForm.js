@@ -14,7 +14,7 @@ class AddItemForm extends Component {
     return (
       <div className="AddNewItem">
 
-        <form className="NewItemForm" onSubmit={this.handleSubmit}>
+        <form className="NewItemForm" onSubmit={ this.handleSubmit.bind(this) }>
 
             <input required placeholder="Enter Item Name..." type="text" className="ItemName" value = {this.state.name} onChange={this.handleNameEvent} />
 
@@ -40,6 +40,7 @@ class AddItemForm extends Component {
       price:""
     })
   };
+
 
   handleNameEvent = (event) => {
     this.setState({

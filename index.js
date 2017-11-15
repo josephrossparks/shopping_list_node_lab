@@ -31,10 +31,19 @@ app.get('/api/items', function (req, res) {
 	res.send(itemListDb.readAll());
 });
 
-app.post('/api/items', function (req, res) {
-	itemListDb.create(req.body);
-	res.send(itemListDb.readAll());
-})
+
+app.post('/api/items', function(req, res) {
+    var item = req.body;
+    itemListDb.create(item);
+    res.send("SUCCESS");
+});
+
+
+app.delete('/api/items/:id', function(req, res) {
+    var id = req.params.id;
+    itemsDb.delete(id);
+    res.send("SUCCESS");
+});
 
 
 var server = app.listen(5000, function () {
