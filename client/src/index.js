@@ -24,7 +24,6 @@ const store = createStore(
 );
 
 store.dispatch(fetchItems());
-debugger;
 
 // We need wrap our whole app in the Provider component. This lets Redux do its magic.
 ReactDOM.render(
