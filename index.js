@@ -49,12 +49,33 @@ app.post("/api/items", function(req, res) {
 
 
 
+
+
+
+
+
 app.delete('/api/items/:id', function(req, res) {
     var id = req.params.id;
-    debugger;
-    itemListDb.delete(id);
-    res.send("SUCCESS");
+    // var sql = "DELETE FROM shopping_list WHERE ($1::text)";
+    // var values = [id];
+
+    pool.query("DELETE FROM shopping_list WHERE id = $1::int", [id]).then(function() {
+        res.status(204) //Deleted
+        res.send("DELETED")
+    })
 });
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 var server = app.listen(5000, function () {
