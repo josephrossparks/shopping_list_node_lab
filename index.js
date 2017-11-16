@@ -29,11 +29,24 @@ app.get('/api/items', function (req, res) {
 });
 
 
-app.post('/api/items', function(req, res) {
-    var item = req.body;
-    itemListDb.create(item);
-    res.send("SUCCESS");
+
+
+
+app.post("/api/items", function(req, res) {
+
+    var item = req.body; // <-- Get the parsed JSON body
+    var sql = "INSERT INTO shopping_list (name, price) " +
+            "VALUES ($1::text, $2::int)";
+
+    var values = [item.name, item.price];
+    pool.query(sql, values).then(function() {
+        res.status(201); // 201 Created
+        res.send("INSERTED");
+    });
 });
+
+
+
 
 
 app.delete('/api/items/:id', function(req, res) {
