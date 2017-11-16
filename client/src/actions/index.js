@@ -18,7 +18,6 @@ function requestItems() {
 }
 
 function receiveItems(items) {
-    debugger;
     return {
         type: "RECEIVE_ITEMS",
         items
@@ -42,6 +41,7 @@ export function addItem(item) {
 
 export function removeItem(id) {
     return function(dispatch) {
+       
         // Use the DELETE method.
         $.ajax({
             // When building URLs, encodeURIComponent helps keep the URL safe.
@@ -51,6 +51,7 @@ export function removeItem(id) {
             // After making the change, fetch the updated contact list.
             dispatch(fetchItems());
         });
+        
     };
 }
 

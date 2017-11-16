@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { removeItem } from "../actions";
 
 import Item from "./Item";
 
@@ -12,7 +11,7 @@ class ItemList extends Component {
 
     const ItemsInCart = this.props.items.map((item, index) => {
       shoppingCartTotal += Number(item.price);
-      return <Item item={item} key={'itemNo'+index} onDelete={this.props.removeItem} />
+      return <Item item={item} key={'itemNo'+index} />
     });
 
     return (
@@ -27,7 +26,9 @@ class ItemList extends Component {
       </div>
     );
   }
+
 }
+
 
 function mapStateToProps(state) {
     return {
@@ -35,8 +36,4 @@ function mapStateToProps(state) {
     }
 }
 
-const mapActionToProps = {
-  removeItem
-}
-
-export default connect(mapStateToProps, mapActionToProps)(ItemList);
+export default connect(mapStateToProps, null)(ItemList);

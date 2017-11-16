@@ -1,17 +1,8 @@
 const express = require('express');
-const bodyParser = require('body-parser');
-
 const app = express();
-// Serve files from client/dist folder. That's where all of our HTML, CSS, and JS
-// from the React client app end up.
-app.use(express.static('client/build'));
-// This allows us to accept JSON bodies in POSTs and PUTs.
-app.use(bodyParser.json());
 
-var errorCallback = console.error.bind(console);
+const itemListDb = require("./in-memory-database")();
 
-// Temporary in-memory database to store contacts.
-var itemListDb = require("./in-memory-database")();
 itemListDb.init([
     {
         name: "Milk",
@@ -27,6 +18,17 @@ itemListDb.init([
     }
 ]);
 
+
+// Serve files from client/dist folder. That's where all of our HTML, CSS, and JS
+// from the React client app end up.
+app.use(express.static('client/build'));
+
+// This allows us to accept JSON bodies in POSTs and PUTs.
+const bodyParser = require('body-parser');
+app.use(bodyParser.json());
+const errorCallback = console.error.bind(console);
+
+
 app.get('/api/items', function (req, res) {
 	res.send(itemListDb.readAll());
 });
@@ -41,7 +43,8 @@ app.post('/api/items', function(req, res) {
 
 app.delete('/api/items/:id', function(req, res) {
     var id = req.params.id;
-    itemsDb.delete(id);
+    debugger;
+    itemListDb.delete(id);
     res.send("SUCCESS");
 });
 
