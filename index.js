@@ -1,23 +1,16 @@
 const express = require('express');
 const app = express();
 
-const itemListDb = require("./in-memory-database")();
+var pg = require('pg');
 
-itemListDb.init([
-    {
-        name: "Milk",
-        price: 3
-    },
-    {
-        name: "Eggs",
-        price: 2
-    },
-    {
-        name: "Bread",
-        price: 4
-    }
-]);
-
+var pool = new pg.Pool({
+   user: "josephparks",
+   password: "",
+   host: "localhost",
+   port: 5432,
+   database: "shopping_list_lab",
+   ssl: false
+ })
 
 // Serve files from client/dist folder. That's where all of our HTML, CSS, and JS
 // from the React client app end up.
@@ -30,7 +23,9 @@ const errorCallback = console.error.bind(console);
 
 
 app.get('/api/items', function (req, res) {
-	res.send(itemListDb.readAll());
+	pool.query("SELECT * FROM shopping_list").then(function(result) {
+        res.send(result.rows);
+    });
 });
 
 
