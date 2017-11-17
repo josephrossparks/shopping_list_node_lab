@@ -1,5 +1,8 @@
 import React, { Component } from 'react';
 
+import { connect } from 'react-redux';
+import { addItem } from "../actions";
+
 class AddItemForm extends Component {
 
   constructor(props) {
@@ -33,7 +36,8 @@ class AddItemForm extends Component {
 
   handleSubmit = (event) => {
     event.preventDefault();
-    this.props.onSubmit(this.state);
+
+    this.props.addItem(this.state);
 
     this.setState({
       name:"",
@@ -55,7 +59,11 @@ class AddItemForm extends Component {
   };
 }
 
-export default AddItemForm;
+const mapActionsToProps = {
+    addItem
+}
+
+export default connect(null, mapActionsToProps)(AddItemForm);
 
 
 

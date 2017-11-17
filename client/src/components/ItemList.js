@@ -9,9 +9,9 @@ class ItemList extends Component {
 
     let shoppingCartTotal = 0
 
-    const ItemsInCart = this.props.items.map((item, index) => {
+    const ItemsInCart = this.props.items.map((item) => {
       shoppingCartTotal += Number(item.price);
-      return <Item item={item} key={'itemNo'+ index} />
+      return <Item item={item} key={item.id} />
     });
 
     return (
@@ -35,5 +35,7 @@ function mapStateToProps(state) {
         items: state.items
     }
 }
+
+
 
 export default connect(mapStateToProps, null)(ItemList);

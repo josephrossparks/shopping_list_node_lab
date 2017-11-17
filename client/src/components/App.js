@@ -1,27 +1,22 @@
 import React, { Component } from 'react';
-import { connect } from 'react-redux';
-import { addItem } from '../actions';
 
 import AddItemForm from './AddItemForm';
 import ItemList from './ItemList'
 
-
-
 class App extends Component {
-  render() {
-    return (
-      <div className="App">
-      	<h2> Shopping List </h2>
-      	<ItemList />
-        <AddItemForm onSubmit={this.props.addItem}/>
 
+  render() {
+
+    return (
+
+      <div className="App">
+        <h2> Shopping List </h2>
+      	<ItemList />
+        <AddItemForm />
       </div>
     );
   }
 }
 
-const mapActionsToProps = {
-    addItem
-}
 
-export default connect(null, mapActionsToProps)(App);
+export default App;
