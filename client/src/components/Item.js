@@ -9,13 +9,13 @@ class Item extends Component {
       <div className="ShoppingCartItem">
         <span className="RemoveItem" onClick={this.handleDelete}> X </span>
         <span className="ItemName"> {this.props.item.name} </span>
-        <span className ="ItemPrice"> ${this.props.item.price} </span>
+        <span className ="ItemPrice"> {this.props.item.price} </span>
       </div>
     );
   }
 
   handleDelete = () => {
-        debugger;
+        
         this.props.removeItem(this.props.item.id);
     }
 }

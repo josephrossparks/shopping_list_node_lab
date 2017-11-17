@@ -41,7 +41,6 @@ export function addItem(item) {
 
 export function removeItem(id) {
     return function(dispatch) {
-        debugger;
        
         // Use the DELETE method.
         $.ajax({

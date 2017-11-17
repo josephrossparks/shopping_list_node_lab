@@ -31,12 +31,11 @@ app.get('/api/items', function (req, res) {
 
 
 
-
 app.post("/api/items", function(req, res) {
 
     var item = req.body; // <-- Get the parsed JSON body
     var sql = "INSERT INTO shopping_list (name, price) " +
-            "VALUES ($1::text, $2::int)";
+            "VALUES ($1::text, $2)";
 
     var values = [item.name, item.price];
     pool.query(sql, values).then(function() {
@@ -44,12 +43,6 @@ app.post("/api/items", function(req, res) {
         res.send("INSERTED");
     });
 });
-
-
-
-
-
-
 
 
 
@@ -64,16 +57,6 @@ app.delete('/api/items/:id', function(req, res) {
         res.send("DELETED")
     })
 });
-
-
-
-
-
-
-
-
-
-
 
 
 

@@ -11,7 +11,7 @@ class ItemList extends Component {
 
     const ItemsInCart = this.props.items.map((item, index) => {
       shoppingCartTotal += Number(item.price);
-      return <Item item={item} key={'itemNo'+index} />
+      return <Item item={item} key={'itemNo'+ index} />
     });
 
     return (
@@ -21,7 +21,7 @@ class ItemList extends Component {
         </div>
         <div className="HorizontalLine"></div>
         <div className="DisplayTotal">
-          Total: ${shoppingCartTotal}
+          Total: ${shoppingCartTotal.toFixed(2)}
         </div>
       </div>
     );

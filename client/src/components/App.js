@@ -11,7 +11,7 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-      
+      	<h2> Shopping List </h2>
       	<ItemList />
         <AddItemForm onSubmit={this.props.addItem}/>
 

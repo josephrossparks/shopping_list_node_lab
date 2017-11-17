@@ -18,7 +18,7 @@ class AddItemForm extends Component {
 
             <input required placeholder="Enter Item Name..." type="text" className="ItemName" value = {this.state.name} onChange={this.handleNameEvent} />
 
-            <input required placeholder="Enter Item Price..." type="number" className="ItemPrice" value = {this.state.price} onChange={this.handlePriceEvent} />
+            <input required placeholder="Enter Item Price..." type="number" className="ItemPrice" step=".01" value = {this.state.price} onChange={this.handlePriceEvent} />
 
             <button type="submit" className="AddNewItemButton">
             Add to List
